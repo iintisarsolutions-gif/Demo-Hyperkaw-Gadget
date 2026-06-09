@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="ms" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyperkaw Gadget - Pakar Repair Phone Sepantas 30 Minit</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons for modern visuals -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9', // Cyber Cyan Cyan-500
+                            600: '#0284c7', // Cyan-600
+                            700: '#0369a1', // Deep Blue Cyan-700
+                            dark: '#0b1329', // Dark Cyberpunk Blue
+                            darker: '#050a14',
+                            accent: '#f59e0b' // High Conversion Yellow/Amber
+                        }
+                    },
+                    boxShadow: {
+                        'neon-glow': '0 0 15px rgba(14, 165, 233, 0.4)',
+                        'gold-glow': '0 0 15px rgba(245, 158, 11, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050a14;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism utility classes */
+        .glass-panel {
+            background: rgba(11, 19, 41, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(14, 165, 233, 0.4);
+            box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.1), 0 8px 10px -6px rgba(14, 165, 233, 0.1);
+        }
+
+        /* Animated background pulse */
+        .glow-sphere {
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Dynamic Custom Button Style */
+        .btn-grad {
+            background-image: linear-gradient(to right, #0ea5e9 0%, #0369a1 51%, #0ea5e9 100%);
+            background-size: 200% auto;
+            transition: 0.5s;
+        }
+        .btn-grad:hover {
+            background-position: right center;
+            box-shadow: 0 0 15px rgba(14, 165, 233, 0.6);
+        }
+
+        .btn-accent {
+            background-image: linear-gradient(to right, #f59e0b 0%, #d97706 51%, #f59e0b 100%);
+            background-size: 200% auto;
+            transition: 0.5s;
+        }
+        .btn-accent:hover {
+            background-position: right center;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
+        }
+
+        /* Step workflow line animation */
+        @keyframes pulse-line {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        .animate-pulse-line {
+            animation: pulse-line 2s infinite;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Background decorative ambient lights -->
+    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-brand-500 glow-sphere"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-indigo-600 glow-sphere"></div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="sticky top-0 z-50 glass-panel border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="bg-gradient-to-tr from-brand-500 to-indigo-600 p-2.5 rounded-xl flex items-center justify-center shadow-neon-glow">
+                        <i class="fa-solid fa-screwdriver-wrench text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-brand-100 to-brand-500">
+                            HYPERKAW
+                        </span>
+                        <span class="block text-[10px] font-bold text-brand-accent tracking-[0.2em] uppercase">
+                            Gadget & Repair
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Menu -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#masalah" class="text-gray-300 hover:text-brand-500 transition-colors font-medium text-sm">Masalah Anda</a>
+                    <a href="#kelebihan" class="text-gray-300 hover:text-brand-500 transition-colors font-medium text-sm">Kelebihan</a>
+                    <a href="#kalkulator" class="text-gray-300 hover:text-brand-500 transition-colors font-medium text-sm bg-brand-500/10 px-3 py-1.5 rounded-full border border-brand-500/20">Kira Kos Repair</a>
+                    <a href="#proses" class="text-gray-300 hover:text-brand-500 transition-colors font-medium text-sm">Cara Kami Bekerja</a>
+                    <a href="#testimoni" class="text-gray-300 hover:text-brand-500 transition-colors font-medium text-sm">Ulasan</a>
+                    <a href="#faq" class="text-gray-300 hover:text-brand-500 transition-colors font-medium text-sm">FAQ</a>
+                </div>
+
+                <!-- Action Button -->
+                <div class="hidden md:block">
+                    <a href="https://wa.me/60173513700?text=Hi%20Hyperkaw%20Gadget%2C%20saya%20nak%20tanya%20tentang%20servis%20repair%20phone%20saya." 
+                       target="_blank"
+                       class="btn-accent text-white px-5 py-2.5 rounded-xl font-bold text-sm tracking-wide shadow-gold-glow flex items-center gap-2 transform hover:scale-[1.02]">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>REPAIR SEKARANG</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2 rounded-lg bg-white/5" aria-label="Buka Menu">
+                        <i class="fa-solid fa-bars-staggered text-xl"></i>
+                    </</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-brand-dark/95 backdrop-blur-lg px-4 pt-4 pb-6 space-y-3">
+            <a href="#masalah" class="block text-gray-300 hover:text-brand-500 transition-colors py-2 px-3 rounded-lg hover:bg-white/5 font-medium text-base">Masalah Anda</a>
+            <a href="#kelebihan" class="block text-gray-300 hover:text-brand-500 transition-colors py-2 px-3 rounded-lg hover:bg-white/5 font-medium text-base">Kelebihan</a>
+            <a href="#kalkulator" class="block text-brand-500 hover:text-brand-600 transition-colors py-2 px-3 rounded-lg hover:bg-white/5 font-semibold text-base">Kira Kos Repair</a>
+            <a href="#proses" class="block text-gray-300 hover:text-brand-500 transition-colors py-2 px-3 rounded-lg hover:bg-white/5 font-medium text-base">Cara Kami Bekerja</a>
+            <a href="#testimoni" class="block text-gray-300 hover:text-brand-500 transition-colors py-2 px-3 rounded-lg hover:bg-white/5 font-medium text-base">Ulasan</a>
+            <a href="#faq" class="block text-gray-300 hover:text-brand-500 transition-colors py-2 px-3 rounded-lg hover:bg-white/5 font-medium text-base">FAQ</a>
+            
+            <div class="pt-4">
+                <a href="https://wa.me/60173513700?text=Hi%20Hyperkaw%20Gadget%2C%20saya%20nak%20tanya%20tentang%20servis%20repair%20phone%20saya." 
+                   target="_blank" 
+                   class="btn-accent text-center text-white w-full py-3 rounded-xl font-bold tracking-wide shadow-gold-glow flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>TANYA SEBUT HARGA SEKARANG</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative pt-12 pb-24 md:pt-20 md:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Column: Copywriting Copy -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <!-- Urgency/Offer Badge -->
+                    <span class="inline-flex items-center gap-2 bg-brand-accent/10 border border-brand-accent/30 text-brand-accent px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6 animate-pulse">
+                        <i class="fa-solid fa-fire-flame-curved"></i> PROMO BULAN INI: PERCUMA TEMPERED GLASS PREMIUM!
+                    </span>
+
+                    <!-- Main Conversion Headline -->
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
+                        Telefon Rosak? Jangan Panik! <br>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-500 via-sky-400 to-indigo-500">
+                            Kami Baiki Depan Mata
+                        </span> <br class="hidden sm:inline">
+                        Sepantas 30 Minit.
+                    </h1>
+
+                    <!-- Supporting Paragraph (Value Proposition) -->
+                    <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+                        Tak perlu tinggal telefon berhari-hari. Di <strong class="text-white font-semibold">Hyperkaw Gadget</strong>, kami repair secara telus di hadapan anda dengan alat ganti berkualiti tinggi dan jaminan waranti sehingga 365 hari!
+                    </p>
+
+                    <!-- CTAs with Conversion Trigger -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-10">
+                        <a href="#kalkulator" class="btn-grad text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-neon-glow w-full sm:w-auto flex items-center justify-center gap-3 group transition-transform">
+                            <span>Kira Kos Anggaran</span>
+                            <i class="fa-solid fa-calculator text-base group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="https://wa.me/60173513700?text=Hi%20Hyperkaw%20Gadget%20saya%20nak%20booking%20slot%20repair%20phone%20sekarang." 
+                           target="_blank"
+                           class="w-full sm:w-auto bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-brand-500/30 px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all duration-300">
+                            <i class="fa-brands fa-whatsapp text-emerald-500 text-xl"></i>
+                            <span>Chat Live WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Signals Indicators -->
+                    <div class="grid grid-cols-3 gap-4 border-t border-white/5 pt-8 max-w-lg mx-auto lg:mx-0">
+                        <div class="text-center lg:text-left">
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white">30m</h3>
+                            <p class="text-xs sm:text-sm text-gray-400">Purata Servis Pantas</p>
+                        </div>
+                        <div class="text-center lg:text-left border-x border-white/5 px-2">
+                            <h3 class="text-2xl sm:text-3xl font-bold text-brand-500">365 Hari</h3>
+                            <p class="text-xs sm:text-sm text-gray-400">Waranti Padu</p>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white">100%</h3>
+                            <p class="text-xs sm:text-sm text-gray-400">Alat Ganti Tulen/OEM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Column: Interactive Tech Graphics with Overlay Sales Badges -->
+                <div class="lg:col-span-5 relative mt-12 lg:mt-0 flex justify-center">
+                    <div class="relative w-full max-w-[420px]">
+                        <!-- Main Phone Frame Graphic (Custom pure CSS & SVG representation) -->
+                        <div class="relative z-10 mx-auto glass-panel p-6 rounded-[3rem] border border-white/10 shadow-neon-glow">
+                            <div class="bg-brand-darker rounded-[2.5rem] overflow-hidden relative aspect-[9/18] border-2 border-brand-500/30 flex flex-col justify-between p-6">
+                                
+                                <!-- Internal Phone UI Representation -->
+                                <div class="flex justify-between items-center">
+                                    <div class="w-16 h-4 bg-black rounded-full mx-auto relative -top-3"></div>
+                                </div>
+
+                                <div class="my-auto space-y-6 text-center">
+                                    <div class="inline-block bg-brand-500/20 text-brand-500 p-4 rounded-full shadow-neon-glow animate-bounce">
+                                        <i class="fa-solid fa-screwdriver-wrench text-3xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white text-lg font-bold">Diagnostik Pintar</h4>
+                                        <p class="text-xs text-gray-400 mt-1">Sistem dikesan bersedia untuk dibaiki</p>
+                                    </div>
+                                    <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3">
+                                        <span class="text-emerald-400 text-xs font-bold block"><i class="fa-regular fa-circle-check"></i> Pemeriksaan PERCUMA</span>
+                                        <span class="text-[10px] text-gray-400">Tiada bayaran jika tak jadi repair</span>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-3">
+                                    <div class="w-full bg-brand-500/20 h-2 rounded-full overflow-hidden">
+                                        <div class="bg-gradient-to-r from-brand-500 to-indigo-500 h-full w-[80%] rounded-full"></div>
+                                    </div>
+                                    <span class="block text-center text-[10px] text-gray-400 tracking-wider">SEDANG REPAIR • 80% SIAP</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Badge Overlay 1: Face-to-Face -->
+                        <div class="absolute -top-6 -left-6 z-20 glass-panel p-4 rounded-2xl border-l-4 border-brand-500 shadow-xl max-w-[180px] animate-pulse">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-brand-500/20 text-brand-500 p-2 rounded-xl">
+                                    <i class="fa-solid fa-eye"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-bold text-white leading-tight">Face to Face</span>
+                                    <span class="text-[10px] text-gray-400">Boleh Tengok Direct</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Badge Overlay 2: No Hidden Cost -->
+                        <div class="absolute bottom-10 -right-6 z-20 glass-panel p-4 rounded-2xl border-l-4 border-brand-accent shadow-xl max-w-[180px]">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-brand-accent/20 text-brand-accent p-2 rounded-xl">
+                                    <i class="fa-solid fa-tags"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-bold text-white leading-tight">Tiada Caj Sorok</span>
+                                    <span class="text-[10px] text-gray-400">Harga Telus & Tetap</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Light glow around phone -->
+                        <div class="absolute inset-0 bg-brand-500/10 rounded-[3rem] blur-2xl z-0 transform scale-90"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- PAIN POINTS SECTION (Agitation) -->
+    <section id="masalah" class="py-20 relative border-t border-white/5 bg-brand-darker/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-500 font-extrabold text-sm uppercase tracking-widest block mb-2">Adakah Ini Masalah Anda?</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Sakit Kepala Bila Telefon Pintar Mula Buat Perangai?</h2>
+                <p class="text-gray-400 mt-4 text-base sm:text-lg">
+                    Kami faham, telefon rosak mengganggu seluruh urusan harian anda. Kerjaan tergendala, mesej penting terlepas, dan memori bergambar boleh hilang begitu sahaja!
+                </p>
+            </div>
+
+            <!-- Problem Grid Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Issue 1 -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between group">
+                    <div>
+                        <div class="bg-rose-500/10 text-rose-400 w-12 h-12 rounded-xl flex items-center justify-center mb-6 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Skrin Pecah & Touch Gelap</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Terjatuh secara tidak sengaja dan skrin terus bergaris, retak seribu, atau langsung tidak boleh disentuh.
+                        </p>
+                    </div>
+                    <div class="border-t border-white/5 pt-4 mt-6 text-xs text-rose-400 font-semibold flex items-center gap-1.5">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Boleh diselesaikan dalam 25 Minit sahaja!
+                    </div>
+                </div>
+
+                <!-- Issue 2 -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between group">
+                    <div>
+                        <div class="bg-rose-500/10 text-rose-400 w-12 h-12 rounded-xl flex items-center justify-center mb-6 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-battery-quarter"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Bateri Kembung & Cepat Kong</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Bateri cepat habis dalam masa beberapa jam, caj tersangkut-sangkut, atau bateri kembung menolak skrin dari perumah.
+                        </p>
+                    </div>
+                    <div class="border-t border-white/5 pt-4 mt-6 text-xs text-rose-400 font-semibold flex items-center gap-1.5">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Alat ganti berkualiti gred A sedia dipasang!
+                    </div>
+                </div>
+
+                <!-- Issue 3 -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between group">
+                    <div>
+                        <div class="bg-rose-500/10 text-rose-400 w-12 h-12 rounded-xl flex items-center justify-center mb-6 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-droplet-slash"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Masuk Air & Boot-Loop</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Terjatuh ke dalam tandas atau terkena air hujan lebat dan skrin tersekat di logo epal/Android tanpa henti.
+                        </p>
+                    </div>
+                    <div class="border-t border-white/5 pt-4 mt-6 text-xs text-rose-400 font-semibold flex items-center gap-1.5">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Servis pencucian & baik pulih motherboard profesional.
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Trust Injection Message -->
+            <div class="mt-12 text-center">
+                <p class="text-base text-gray-300">
+                    Sama ada masalah kecil mahupun kerosakan berat pada litar (motherboard), juruteknik pakar kami sedia membantu.
+                </p>
+                <div class="mt-4 flex flex-wrap justify-center gap-6 text-sm text-gray-400">
+                    <span><i class="fa-regular fa-circle-check text-brand-500 mr-2"></i>Semua Gred iPhone</span>
+                    <span><i class="fa-regular fa-circle-check text-brand-500 mr-2"></i>Samsung, Xiaomi, Vivo, Oppo</span>
+                    <span><i class="fa-regular fa-circle-check text-brand-500 mr-2"></i>iPad & Tablet</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US (Unique Selling Proposition) -->
+    <section id="kelebihan" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Side: Interactive image/visual concept -->
+                <div class="space-y-6">
+                    <span class="text-brand-500 font-extrabold text-sm uppercase tracking-widest block">Kelebihan Hyperkaw Gadget</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                        Mengapa Kami Menjadi Pilihan Utama Pemilik Telefon Pintar?
+                    </h2>
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        Kami tidak mahu anda rasa ragu-ragu tentang keselamatan data, kualiti alat ganti atau kerosakan semula telefon anda. Kami bina perniagaan ini berasaskan kepercayaan dan profesionalisme.
+                    </p>
+
+                    <!-- Trust Point Accordion Items -->
+                    <div class="space-y-4 pt-4">
+                        <!-- Point 1 -->
+                        <div class="flex gap-4 p-4 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-brand-500 text-2xl mt-1 flex-shrink-0">
+                                <i class="fa-solid fa-users-viewfinder"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Konsep Repair Depan Mata (Face-to-Face)</h4>
+                                <p class="text-sm text-gray-400 mt-1">Anda boleh duduk bertentangan dengan juruteknik kami sambil menonton proses membaiki dari awal hingga siap. Data dan privasi anda dijamin 100% selamat.</p>
+                            </div>
+                        </div>
+
+                        <!-- Point 2 -->
+                        <div class="flex gap-4 p-4 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-brand-accent text-2xl mt-1 flex-shrink-0">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Waranti Tanpa Soal (Hingga 365 Hari)</h4>
+                                <p class="text-sm text-gray-400 mt-1">Kami menyediakan waranti bertulis untuk setiap penukaran alat ganti. Jika ada masalah dalam tempoh waranti, kami ganti yang baru serta-merta tanpa banyak kerenah.</p>
+                            </div>
+                        </div>
+
+                        <!-- Point 3 -->
+                        <div class="flex gap-4 p-4 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-emerald-400 text-2xl mt-1 flex-shrink-0">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Pemeriksaan & Diagnostik Percuma</h4>
+                                <p class="text-sm text-gray-400 mt-1">Tiada sebarang bayaran dikenakan untuk membuat semakan kerosakan awal telefon anda. Anda bebas membuat keputusan selepas kami berikan penerangan penuh kos repair.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: High Converting Feature Highlights Display -->
+                <div class="bg-gradient-to-br from-brand-dark to-slate-900 border border-white/10 p-8 sm:p-12 rounded-3xl relative">
+                    <div class="absolute -top-4 -right-4 bg-brand-accent text-brand-darker font-extrabold text-xs px-4 py-2 rounded-full uppercase tracking-wider transform rotate-12 shadow-gold-glow">
+                        Sangat Dipercayai!
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-award text-brand-accent text-3xl"></i>
+                        <span>Komitmen Mutu Terbaik</span>
+                    </h3>
+
+                    <ul class="space-y-5">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-brand-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-gray-300 text-sm sm:text-base"><strong>Hanya Guna Alat Ganti Berkualiti:</strong> Pilihan gred Original (OEM) atau gred premium berkualiti terbaik sahaja dipasang.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-brand-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-gray-300 text-sm sm:text-base"><strong>Juruteknik Bertauliah:</strong> Semua kerja pembaikan dikendalikan oleh juruteknik mahir yang mempunyai latihan khusus.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-brand-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-gray-300 text-sm sm:text-base"><strong>Tiada Caj Tersembunyi:</strong> Harga yang dipersetujui adalah harga akhir yang anda bayar. Selesai masalah, baru bayar!</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-brand-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-gray-300 text-sm sm:text-base"><strong>Alatan Menyeluruh:</strong> Kami dilengkapi dengan fasiliti mikroskop dan alat pemanas moden untuk baiki kerosakan cip mikro halus.</span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-8 pt-8 border-t border-white/5 flex items-center gap-4">
+                        <div class="flex -space-x-3">
+                            <img class="w-10 h-10 rounded-full border-2 border-brand-dark" src="https://placehold.co/100x100/1e293b/ffffff?text=U1" alt="Pelanggan" onerror="this.src='https://placehold.co/100x100/111827/ffffff?text=User'">
+                            <img class="w-10 h-10 rounded-full border-2 border-brand-dark" src="https://placehold.co/100x100/1e293b/ffffff?text=U2" alt="Pelanggan" onerror="this.src='https://placehold.co/100x100/111827/ffffff?text=User'">
+                            <img class="w-10 h-10 rounded-full border-2 border-brand-dark" src="https://placehold.co/100x100/1e293b/ffffff?text=U3" alt="Pelanggan" onerror="this.src='https://placehold.co/100x100/111827/ffffff?text=User'">
+                        </div>
+                        <div>
+                            <span class="block text-white font-extrabold text-sm">Disukai oleh 10,000+ Pelanggan</span>
+                            <span class="block text-xs text-gray-400">Purata penilaian rating 4.9 bintang di media sosial!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTERACTIVE PRICING ESTIMATOR / CALCULATOR (High Conversion Tool) -->
+    <section id="kalkulator" class="py-20 bg-brand-dark border-y border-white/5 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-brand-accent font-extrabold text-sm uppercase tracking-widest block mb-2">Alat Anggaran Harga Pantas</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Kalkulator Anggaran Kos Repair</h2>
+                <p class="text-gray-400 mt-3 text-sm sm:text-base">
+                    Pilih jenama peranti, model, dan jenis kerosakan untuk melihat anggaran kos membaiki dengan telus dan cepat.
+                </p>
+            </div>
+
+            <!-- Interactive Widget Card -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 shadow-neon-glow border border-brand-500/20">
+                <form id="calculator-form" class="space-y-6">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Step 1: Brand Selection -->
+                        <div>
+                            <label for="brand" class="block text-sm font-semibold text-gray-300 mb-2">
+                                <span class="text-brand-500 mr-1.5 font-bold">1.</span> Pilih Jenama Telefon
+                            </label>
+                            <select id="brand" class="w-full bg-brand-darker border border-white/10 text-white rounded-xl py-3.5 px-4 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all outline-none">
+                                <option value="" disabled selected>Pilih Jenama...</option>
+                                <option value="apple">Apple (iPhone)</option>
+                                <option value="samsung">Samsung</option>
+                                <option value="xiaomi">Xiaomi</option>
+                                <option value="oppo">Oppo / Vivo</option>
+                            </select>
+                        </div>
+
+                        <!-- Step 2: Model Selection (Dynamically Loaded) -->
+                        <div>
+                            <label for="model" class="block text-sm font-semibold text-gray-300 mb-2">
+                                <span class="text-brand-500 mr-1.5 font-bold">2.</span> Pilih Model Peranti
+                            </label>
+                            <select id="model" disabled class="w-full bg-brand-darker border border-white/10 text-white rounded-xl py-3.5 px-4 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all outline-none disabled:opacity-50 disabled:cursor-not-allowed">
+                                <option value="" disabled selected>Pilih Jenama Dahulu...</option>
+                            </select>
+                        </div>
+
+                        <!-- Step 3: Issue Selection -->
+                        <div>
+                            <label for="issue" class="block text-sm font-semibold text-gray-300 mb-2">
+                                <span class="text-brand-500 mr-1.5 font-bold">3.</span> Pilih Jenis Kerosakan
+                            </label>
+                            <select id="issue" class="w-full bg-brand-darker border border-white/10 text-white rounded-xl py-3.5 px-4 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all outline-none">
+                                <option value="" disabled selected>Pilih Masalah...</option>
+                                <option value="screen">Skrin Pecah / Rosak LCD</option>
+                                <option value="battery">Bateri Kong / Cepat Habis</option>
+                                <option value="charging">Sukar Di-Caj (Charging Port)</option>
+                                <option value="camera">Kamera Kabur / Rosak</option>
+                                <option value="motherboard">Kerosakan Litar Utama / Motherboard</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Output Estimation Box -->
+                    <div id="estimate-result" class="hidden mt-8 bg-brand-darker/80 border border-brand-500/20 p-6 rounded-2xl text-center space-y-4">
+                        <span class="text-xs uppercase font-extrabold tracking-widest text-gray-400">Anggaran Anggaran Kos Baiki</span>
+                        <div class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight flex justify-center items-center">
+                            <span class="text-xl text-brand-500 font-semibold mr-1">RM</span>
+                            <span id="price-range" class="bg-clip-text text-transparent bg-gradient-to-r from-brand-accent to-yellow-400">0.00</span>
+                        </div>
+                        <p class="text-xs text-gray-400 max-w-md mx-auto">
+                            *Harga ini adalah anggaran kasar berdasarkan jenis alat ganti. Sila hantar untuk pemeriksaan PERCUMA fizikal untuk pengesahan harga akhir yang tepat.
+                        </p>
+                        
+                        <!-- CTA button embedded inside the calculator results -->
+                        <div class="pt-2">
+                            <button type="button" id="booking-whatsapp-btn" class="btn-accent text-white px-8 py-3.5 rounded-xl font-extrabold text-base shadow-gold-glow inline-flex items-center gap-3 transform hover:scale-105 transition-all">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                                <span>SAHKAN BOOKING VIA WHATSAPP</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Informational Box (Always Visible) -->
+                    <div class="flex items-start gap-3 bg-white/5 border border-white/5 p-4 rounded-xl mt-6">
+                        <i class="fa-solid fa-circle-info text-brand-500 text-lg mt-0.5 flex-shrink-0"></i>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            <strong>Nota:</strong> Kami menjamin tiada sebarang bayaran tersembunyi. Kami sentiasa melakukan pemeriksaan diagnostik secara menyeluruh dan mengesahkan kos penuh pembaikan bersama anda sebelum memulakan apa-apa kerja baik pulih.
+                        </p>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROCESS FLOW SECTION -->
+    <section id="proses" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-brand-500 font-extrabold text-sm uppercase tracking-widest block mb-2">Mudah & Telus</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">3 Langkah Mudah Menyelamatkan Telefon Anda</h2>
+                <p class="text-gray-400 mt-3 text-sm sm:text-base">
+                    Tiada birokrasi, tiada giliran panjang, dan paling penting: tiada keraguan data peribadi anda digodam.
+                </p>
+            </div>
+
+            <!-- Steps Alignment Grid -->
+            <div class="relative">
+                
+                <!-- Connector Line for Desktop -->
+                <div class="hidden md:block absolute top-[28%] left-[10%] right-[10%] h-1 bg-gradient-to-r from-brand-500 via-indigo-500 to-emerald-500 opacity-20 animate-pulse-line z-0"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+                    
+                    <!-- Step 1 Card -->
+                    <div class="text-center group">
+                        <div class="mx-auto w-20 h-20 rounded-2xl bg-brand-500/10 border-2 border-brand-500 text-brand-500 text-3xl flex items-center justify-center font-black mb-6 shadow-neon-glow group-hover:scale-110 transition-transform relative bg-brand-darker">
+                            1
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Hadir / Booking Slot</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed px-4">
+                            Sila isi borang di laman web ini atau hubungi talian WhatsApp kami untuk membuat tempahan slot pembaikan yang pantas.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 Card -->
+                    <div class="text-center group">
+                        <div class="mx-auto w-20 h-20 rounded-2xl bg-indigo-500/10 border-2 border-indigo-500 text-indigo-400 text-3xl flex items-center justify-center font-black mb-6 shadow-lg group-hover:scale-110 transition-transform relative bg-brand-darker">
+                            2
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Saksikan Kami Membaiki</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed px-4">
+                            Bawa peranti anda dan tonton secara langsung pakar kami membuat pemeriksaan, pengesahan, dan penggantian perkakasan.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 Card -->
+                    <div class="text-center group">
+                        <div class="mx-auto w-20 h-20 rounded-2xl bg-emerald-500/10 border-2 border-emerald-500 text-emerald-400 text-3xl flex items-center justify-center font-black mb-6 shadow-lg group-hover:scale-110 transition-transform relative bg-brand-darker">
+                            3
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Selesai & Uji Peranti</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed px-4">
+                            Buat ujian sepenuhnya pada fungsi telefon anda yang telah siap. Puas hati baru buat bayaran, dan bawa pulang waranti bertulis anda!
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- GALERI BERGAMBAR SECTION -->
+    <section id="galeri" class="py-20 border-t border-white/5 bg-brand-darker/30 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-brand-500 font-extrabold text-sm uppercase tracking-widest block mb-2">Galeri Hasil Kerja</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Bukti Kepakaran & Keadaan Premis Kami</h2>
+                <p class="text-gray-400 mt-3 text-sm sm:text-base">
+                    Intip proses kerja harian kami yang dijalankan secara profesional, bersih, telus dan dipantau rapi.
+                </p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-brand-dark shadow-lg">
+                    <img src="https://placehold.co/600x400/0ea5e9/ffffff?text=Penukaran+LCD+iPhone" alt="Penukaran LCD iPhone" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Repair+LCD'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-darker via-brand-darker/40 to-transparent opacity-90 p-6 flex flex-col justify-end">
+                        <span class="text-brand-accent font-bold text-xs uppercase tracking-wider mb-1">Skrin & LCD</span>
+                        <h4 class="text-white font-bold text-lg">Tukar LCD Face-to-Face</h4>
+                        <p class="text-gray-400 text-xs mt-1">Selesai diganti dalam masa 25 minit dihadapan pelanggan.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-brand-dark shadow-lg">
+                    <img src="https://placehold.co/600x400/312e81/ffffff?text=Mikro-Soldering+Motherboard" alt="Baiki Motherboard" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Motherboard+Repair'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-darker via-brand-darker/40 to-transparent opacity-90 p-6 flex flex-col justify-end">
+                        <span class="text-brand-500 font-bold text-xs uppercase tracking-wider mb-1">Motherboard</span>
+                        <h4 class="text-white font-bold text-lg">Pateri Mikro IC Chip</h4>
+                        <p class="text-gray-400 text-xs mt-1">Menggunakan mikroskop ketepatan tinggi bagi pembaikan litar rumit.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-brand-dark shadow-lg">
+                    <img src="https://placehold.co/600x400/047857/ffffff?text=Peralatan+Diagnostik+Moden" alt="Peralatan Diagnostik" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Tech+Tools'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-darker via-brand-darker/40 to-transparent opacity-90 p-6 flex flex-col justify-end">
+                        <span class="text-emerald-400 font-bold text-xs uppercase tracking-wider mb-1">Alatan Profesional</span>
+                        <h4 class="text-white font-bold text-lg">Makmal Repair Berteknologi</h4>
+                        <p class="text-gray-400 text-xs mt-1">Dilengkapi alatan calibration skrin dan penguji bateri terkini.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-brand-dark shadow-lg">
+                    <img src="https://placehold.co/600x400/b91c1c/ffffff?text=Bateri+Kembung+Bahaya" alt="Tukar Bateri Premium" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Battery+Replacement'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-darker via-brand-darker/40 to-transparent opacity-90 p-6 flex flex-col justify-end">
+                        <span class="text-red-400 font-bold text-xs uppercase tracking-wider mb-1">Bateri</span>
+                        <h4 class="text-white font-bold text-lg">Penggantian Bateri Premium</h4>
+                        <p class="text-gray-400 text-xs mt-1">Membuang bateri kembung yang berisiko meletup dengan selamat.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-brand-dark shadow-lg">
+                    <img src="https://placehold.co/600x400/4f46e5/ffffff?text=Urusan+Kaunter+Mesra" alt="Urusan Kaunter" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Outlet+Counter'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-darker via-brand-darker/40 to-transparent opacity-90 p-6 flex flex-col justify-end">
+                        <span class="text-indigo-400 font-bold text-xs uppercase tracking-wider mb-1">Kaunter Servis</span>
+                        <h4 class="text-white font-bold text-lg">Khidmat Pelanggan Mesra</h4>
+                        <p class="text-gray-400 text-xs mt-1">Ruang menunggu yang selesa dengan kemudahan pengecasan peranti percuma.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-brand-dark shadow-lg">
+                    <img src="https://placehold.co/600x400/1e293b/ffffff?text=Jaminan+Kualiti+OEM" alt="Alat Ganti Tulen" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/111827/ffffff?text=Premium+Spareparts'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-darker via-brand-darker/40 to-transparent opacity-90 p-6 flex flex-col justify-end">
+                        <span class="text-brand-accent font-bold text-xs uppercase tracking-wider mb-1">Alat Ganti</span>
+                        <h4 class="text-white font-bold text-lg">Stok Alat Ganti Sedia Ada</h4>
+                        <p class="text-gray-400 text-xs mt-1">Bekalan skrin & bateri yang sentiasa mencukupi untuk semua model popular.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF / TESTIMONIALS SECTION -->
+    <section id="testimoni" class="py-20 bg-brand-darker/70 border-t border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-brand-accent font-extrabold text-sm uppercase tracking-widest block mb-2">Ulasan Pelanggan Sebenar</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Apa Kata Pemilik Telefon Pintar Yang Telah Kami Bantu?</h2>
+                <p class="text-gray-400 mt-3 text-sm sm:text-base">
+                    Kepuasan anda adalah keutamaan mutlak kami. Ini maklum balas ikhlas yang kami terima secara langsung.
+                </p>
+            </div>
+
+            <!-- Review Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Review 1 -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <!-- Stars -->
+                        <div class="flex text-amber-500 gap-1 mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm italic leading-relaxed mb-6">
+                            "Skrin iPhone 13 Pro saya retak selepas terjatuh tangga. Puas cari kedai yang boleh dipercayai. Jumpa Hyperkaw Gadget, technician buat face-to-face repair terus depan saya. Selesai tak sampai 25 minit, skrin baru cun habis. Mantap sangat!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                        <img class="w-10 h-10 rounded-full border border-white/10" src="https://placehold.co/100x100/1e293b/ffffff?text=AD" alt="Ahmad Daniel" onerror="this.src='https://placehold.co/100x100/111827/ffffff?text=User'">
+                        <div>
+                            <span class="block text-white font-bold text-sm">Ahmad Daniel</span>
+                            <span class="block text-xs text-brand-500">Kuala Lumpur (Pelanggan iPhone)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <!-- Stars -->
+                        <div class="flex text-amber-500 gap-1 mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm italic leading-relaxed mb-6">
+                            "Sebelum ini risau nak hantar kedai repair sebab data sensitif kerja dalam phone banyak. Di Hyperkaw, dia orang repair kat meja kaunter secara terbuka. Tukar bateri Samsung s22 ultra saya sekejap je. Memang profesional dan telus."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                        <img class="w-10 h-10 rounded-full border border-white/10" src="https://placehold.co/100x100/1e293b/ffffff?text=NS" alt="Nurul Syuhada" onerror="this.src='https://placehold.co/100x100/111827/ffffff?text=User'">
+                        <div>
+                            <span class="block text-white font-bold text-sm">Nurul Syuhada</span>
+                            <span class="block text-xs text-brand-500">Shah Alam (Pelanggan Samsung)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <!-- Stars -->
+                        <div class="flex text-amber-500 gap-1 mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm italic leading-relaxed mb-6">
+                            "Bateri iPhone kembung tolak skrin keluar, ingatkan kena tukar phone baru. Nasib baik hantar sini, technician tukar bateri baru yang berkualiti dengan waranti setahun. Memang recommended kedai ni, tak menyesal langsung!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                        <img class="w-10 h-10 rounded-full border border-white/10" src="https://placehold.co/100x100/1e293b/ffffff?text=MK" alt="Muaz Khairi" onerror="this.src='https://placehold.co/100x100/111827/ffffff?text=User'">
+                        <div>
+                            <span class="block text-white font-bold text-sm">Muaz Khairi</span>
+                            <span class="block text-xs text-brand-500">Cheras (Pelanggan iPhone)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-brand-500 font-extrabold text-sm uppercase tracking-widest block mb-2">Soalan Lazim</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Ada Soalan Tentang Servis Kami?</h2>
+                <p class="text-gray-400 mt-3 text-sm sm:text-base">
+                    Sila semak jawapan ringkas di bawah bagi persoalan yang sering ditanya oleh pelanggan kami.
+                </p>
+            </div>
+
+            <!-- Accordion List -->
+            <div class="space-y-4">
+                
+                <!-- FAQ Item 1 -->
+                <div class="glass-panel rounded-2xl border border-white/5 overflow-hidden transition-all duration-300 faq-item">
+                    <button class="w-full text-left p-6 flex justify-between items-center focus:outline-none focus:text-brand-500" onclick="toggleFaq(this)">
+                        <span class="font-bold text-white text-base sm:text-lg">Berapa lamakah tempoh masa yang diambil untuk repair?</span>
+                        <span class="text-brand-500 text-xl transition-transform duration-300 faq-icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-6 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5">
+                            Bagi kerosakan lazim seperti penukaran skrin LCD, penukaran bateri, mahupun penggantian charging port, ia hanya mengambil masa sekitar 20 hingga 45 minit sahaja. Manakala pembaikan motherboard yang kompleks mungkin mengambil masa 1 hingga 3 hari bekerja bergantung kepada tahap kesukaran.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="glass-panel rounded-2xl border border-white/5 overflow-hidden transition-all duration-300 faq-item">
+                    <button class="w-full text-left p-6 flex justify-between items-center focus:outline-none focus:text-brand-500" onclick="toggleFaq(this)">
+                        <span class="font-bold text-white text-base sm:text-lg">Adakah data peranti saya selamat sewaktu dibaiki?</span>
+                        <span class="text-brand-500 text-xl transition-transform duration-300 faq-icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-6 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5">
+                            Ya, 100% selamat! Memandangkan kami mengamalkan konsep pembaikan telus secara bertentangan (face-to-face), anda sendiri boleh memantau setiap langkah yang dilakukan oleh technician kami. Tiada risiko perkongsian maklumat atau kehilangan data tanpa kebenaran anda.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="glass-panel rounded-2xl border border-white/5 overflow-hidden transition-all duration-300 faq-item">
+                    <button class="w-full text-left p-6 flex justify-between items-center focus:outline-none focus:text-brand-500" onclick="toggleFaq(this)">
+                        <span class="font-bold text-white text-base sm:text-lg">Berapakah tempoh waranti yang diberikan?</span>
+                        <span class="text-brand-500 text-xl transition-transform duration-300 faq-icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-6 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5">
+                            Kami sangat yakin dengan kualiti alat ganti kami. Oleh itu, kami menawarkan perlindungan waranti bertulis sehingga 365 hari (1 tahun) untuk penukaran perkakasan terpilih. Waranti merangkumi sebarang kecacatan pembuatan (manufacturing defects) tanpa masalah sampingan.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="glass-panel rounded-2xl border border-white/5 overflow-hidden transition-all duration-300 faq-item">
+                    <button class="w-full text-left p-6 flex justify-between items-center focus:outline-none focus:text-brand-500" onclick="toggleFaq(this)">
+                        <span class="font-bold text-white text-base sm:text-lg">Adakah ada cas dikenakan jika telefon saya tak dapat dibaiki?</span>
+                        <span class="text-brand-500 text-xl transition-transform duration-300 faq-icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-6 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5">
+                            Tidak sama sekali! Jika selepas pemeriksaan penuh peranti anda disahkan rosak sepenuhnya dan tidak dapat dipulihkan, tiada sebarang bayaran dikenakan untuk diagnostik tersebut. Polisi kami amat ringkas: Tiada Hasil, Tiada Bayaran!
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LEAD BOOKING & CONTACT FORM SECTION -->
+    <section id="booking" class="py-20 bg-brand-dark/50 border-t border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Info Left Side -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-brand-accent font-extrabold text-sm uppercase tracking-widest block">Tawaran Had Masa Terhad</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Tempah Slot Anda Hari Ini Dan Dapatkan Hadiah Percuma!</h2>
+                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                        Kurangkan tempoh masa menunggu anda dengan membuat penempahan slot lebih awal. Kami akan menyediakan juruteknik khas bersedia untuk melayani anda sebaik sahaja tiba di kaunter.
+                    </p>
+
+                    <!-- Urgent Promo box -->
+                    <div class="border border-brand-accent/20 bg-brand-accent/10 rounded-2xl p-6 space-y-3">
+                        <div class="flex items-center gap-2 text-brand-accent font-bold text-sm">
+                            <i class="fa-solid fa-gift text-lg"></i>
+                            <span>ISTIMEWA UNTUK BOOKING ONLINE:</span>
+                        </div>
+                        <ul class="space-y-2 text-xs sm:text-sm text-gray-300">
+                            <li><i class="fa-solid fa-check text-brand-accent mr-2"></i> PERCUMA Tempered Glass Premium</li>
+                            <li><i class="fa-solid fa-check text-brand-accent mr-2"></i> PERCUMA Servis Pembersihan Habuk Telefon</li>
+                            <li><i class="fa-solid fa-check text-brand-accent mr-2"></i> PERCUMA Pemeriksaan Kesihatan Bateri Ringkas</li>
+                        </ul>
+                    </div>
+
+                    <!-- Outlet Location Info -->
+                    <div class="space-y-4 pt-4 border-t border-white/5">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-location-dot text-brand-500 text-xl"></i>
+                            <div>
+                                <span class="block text-white text-xs font-semibold uppercase">Alamat Outlet Kami:</span>
+                                <span class="text-gray-400 text-sm">Lot 1403, No 4, Jalan Bukit Kuda, Kampung Kuantan, 41300 Klang, Selangor</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <!-- Ditukar dari items-center ke items-start supaya ikon jam kekal di atas bila text jadi multi-line -->
+                            <i class="fa-solid fa-clock text-brand-500 text-xl mt-0.5"></i>
+                            <div>
+                                <span class="block text-white text-xs font-semibold uppercase mb-1">Waktu Operasi:</span>
+                                <!-- Ditambah class 'block' pada setiap span di bawah -->
+                                <span class="block text-gray-400 text-sm">Isnin - Jumaat (10:30 Pagi - 9:30 Malam)</span>
+                                <span class="block text-gray-400 text-sm">Sabtu (10:30 Pagi - 5:30 Petang)</span>
+                                <span class="block text-gray-400 text-sm text-red-400">Ahad (Tutup)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Right Side -->
+                <div class="lg:col-span-7">
+                    <div class="glass-panel p-8 rounded-3xl border border-white/10 shadow-neon-glow relative">
+                        <h3 class="text-2xl font-bold text-white mb-6">Borang Tempahan & Konsultasi</h3>
+                        
+                        <form id="booking-form" class="space-y-4">
+                            <!-- Full name -->
+                            <div>
+                                <label for="fullname" class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Nama Penuh Anda</label>
+                                <input type="text" id="fullname" required placeholder="Contoh: Muhammad Ali" class="w-full bg-brand-darker border border-white/10 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 rounded-xl px-4 py-3 text-white text-sm outline-none transition-all">
+                            </div>
+
+                            <!-- Phone/WhatsApp Number -->
+                            <div>
+                                <label for="phone" class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Nombor Telefon (WhatsApp)</label>
+                                <input type="tel" id="phone" required placeholder="Contoh: 0123456789" class="w-full bg-brand-darker border border-white/10 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 rounded-xl px-4 py-3 text-white text-sm outline-none transition-all">
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <!-- Model Phone -->
+                                <div>
+                                    <label for="device" class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Model Telefon</label>
+                                    <input type="text" id="device" required placeholder="Contoh: iPhone 13 Pro Max" class="w-full bg-brand-darker border border-white/10 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 rounded-xl px-4 py-3 text-white text-sm outline-none transition-all">
+                                </div>
+                                <!-- Select Date -->
+                                <div>
+                                    <label for="booking-date" class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Tarikh Cadangan Booking</label>
+                                    <input type="date" id="booking-date" required class="w-full bg-brand-darker border border-white/10 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 rounded-xl px-4 py-3 text-white text-sm outline-none transition-all">
+                                </div>
+                            </div>
+
+                            <!-- Additional description -->
+                            <div>
+                                <label for="details" class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Ringkasan Masalah Telefon</label>
+                                <textarea id="details" rows="3" placeholder="Contoh: Skrin LCD retak selepas jatuh air..." class="w-full bg-brand-darker border border-white/10 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 rounded-xl px-4 py-3 text-white text-sm outline-none transition-all"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-accent text-white w-full py-4 rounded-xl font-bold tracking-wide shadow-gold-glow flex items-center justify-center gap-2 transform hover:scale-[1.01] transition-all">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span>HANTAR BOOKING & REBUT PROMO</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GOOGLE MAP SECTION -->
+    <section id="lokasi" class="py-20 border-t border-white/5 relative bg-brand-darker">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Location Details Left -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-brand-500 font-extrabold text-sm uppercase tracking-widest block">Lokasi & Navigasi</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Mudah Cari Kedai Kami!</h2>
+                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                        Outlet kami terletak strategik di kawasan tech hub utama, mempunyai parkir kereta yang luas, dan berada bersebelahan dengan kafe terkenal untuk memudahkan anda menunggu sementara peranti dibaiki.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-brand-500/10 text-brand-500 p-3 rounded-xl mt-1">
+                                <i class="fa-solid fa-map-location-dot text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-base">Alamat Fizikal</h4>
+                                <p class="text-gray-400 text-sm mt-1">Lot 1403, No 4, Jalan Bukit Kuda, Kampung Kuantan, 41300 Klang, Selangor</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-3">
+                            <div class="bg-brand-accent/10 text-brand-accent p-3 rounded-xl mt-1">
+                                <i class="fa-solid fa-compass text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-base">Panduan Navigasi Mudah</h4>
+                                <div class="flex gap-3 mt-3">
+                                    <a href="https://maps.google.com" target="_blank" class="bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-2 rounded-xl text-white text-xs font-bold flex items-center gap-2 transition-all">
+                                        <i class="fa-solid fa-location-arrow text-brand-500"></i> Google Maps
+                                    </a>
+                                    <a href="https://waze.com" target="_blank" class="bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-2 rounded-xl text-white text-xs font-bold flex items-center gap-2 transition-all">
+                                        <i class="fa-solid fa-car text-brand-accent"></i> Waze Navigation
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Map Embed Frame Right -->
+                <div class="lg:col-span-7">
+                    <div class="w-full h-[350px] sm:h-[400px] rounded-3xl overflow-hidden border border-white/10 shadow-neon-glow relative bg-brand-dark">
+                        <!-- Simulated Interactive Map Embed using genuine public Google Maps Link for KL -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31873.60885453651!2d101.42255811083983!3d3.040692499999992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc538f0f0101ff%3A0xfa812fba41f35e8a!2sHyperkaw%20Gadget!5e0!3m2!1sen!2smy!4v1780937353825!5m2!1sen!2smy" 
+                            class="w-full h-full border-0 grayscale invert opacity-80 hover:grayscale-0 hover:invert-0 hover:opacity-100 transition-all duration-500" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-darker pt-16 pb-8 border-t border-white/5 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-gradient-to-tr from-brand-500 to-indigo-600 p-2 rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-screwdriver-wrench text-white text-lg"></i>
+                        </div>
+                        <span class="text-lg font-extrabold tracking-wider text-white">HYPERKAW</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Peneraju pasaran bagi perkhidmatan membaiki peranti mudah alih yang berasaskan konsep telus dan berkualiti tinggi. Selesaikan masalah perkakasan anda hari ini!
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-brand-500/20 text-gray-400 hover:text-brand-500 flex items-center justify-center transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-brand-500/20 text-gray-400 hover:text-brand-500 flex items-center justify-center transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-brand-500/20 text-gray-400 hover:text-brand-500 flex items-center justify-center transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-4">Navigasi Pantas</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><a href="#masalah" class="hover:text-brand-500 transition-colors">Masalah Phone</a></li>
+                        <li><a href="#kelebihan" class="hover:text-brand-500 transition-colors">Kelebihan Kami</a></li>
+                        <li><a href="#kalkulator" class="hover:text-brand-500 transition-colors">Kalkulator Harga</a></li>
+                        <li><a href="#proses" class="hover:text-brand-500 transition-colors">Cara Kerja</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Services -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-4">Servis Utama</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li>Tukar LCD Screen Original / OEM</li>
+                        <li>Ganti Bateri Gred Premium</li>
+                        <li>Baiki Charging Port Bermasalah</li>
+                        <li>Pembaikan Motherboard & IC Chip</li>
+                        <li>Baik Pulih Telefon Masuk Air</li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Safety & Payment Method Badge -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-4">Pilihan Pembayaran</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                        Kami menerima pemindahan dalam talian, kad kredit/debit, DuitNow QR, serta pembayaran tunai.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-gray-400 text-lg">
+                        <span class="bg-white/5 px-2.5 py-1 rounded border border-white/5 text-xs font-bold text-white flex items-center gap-1"><i class="fa-solid fa-money-bill"></i> Tunai</span>
+                        <span class="bg-white/5 px-2.5 py-1 rounded border border-white/5 text-xs font-bold text-white flex items-center gap-1"><i class="fa-solid fa-credit-card"></i> Kad</span>
+                        <span class="bg-white/5 px-2.5 py-1 rounded border border-white/5 text-xs font-bold text-white flex items-center gap-1"><i class="fa-solid fa-qrcode"></i> DuitNow</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer copyright bottom info -->
+            <div class="border-t border-white/5 pt-8 text-center flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-[11px] text-gray-500">
+                    &copy; 2026 Hyperkaw Gadget. Semua hak cipta terpelihara. Laman web ini direka untuk tujuan penukaran jualan premium & pemasaran perniagaan.
+                </p>
+                <div class="flex gap-4 text-[11px] text-gray-500">
+                    <a href="#" class="hover:text-white transition-colors">Dasar Privasi</a>
+                    <a href="#" class="hover:text-white transition-colors">Terma & Syarat</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY FLOATING WHATSAPP CTA - UNIVERSAL (PREMIUM WIDGET) -->
+    <div class="fixed bottom-6 right-6 z-50 flex items-center gap-3 group">
+        <!-- Tooltip Text -->
+        <div class="bg-brand-dark border border-white/10 px-4 py-2 rounded-xl text-white text-xs font-semibold shadow-2xl opacity-0 transform translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none hidden sm:block whitespace-nowrap">
+            <span class="flex items-center gap-1.5">
+                <span class="w-2 h-2 bg-emerald-500 rounded-full animate-ping"></span>
+                Sembang Live Bersama Kami!
+            </span>
+        </div>
+        <!-- Floating Button -->
+        <a href="https://wa.me/60173513700?text=Hi%20Hyperkaw%20Gadget%2C%20saya%20nak%20tanya%20tentang%20servis%20repair%20phone%20saya." 
+           target="_blank" 
+           class="w-14 h-14 bg-emerald-500 hover:bg-emerald-600 rounded-full flex items-center justify-center text-white text-3xl shadow-neon-glow hover:shadow-emerald-500/50 hover:scale-110 active:scale-95 transition-all duration-300 relative animate-bounce"
+           aria-label="Sembang WhatsApp">
+            <!-- Ring Glow Effect -->
+            <span class="absolute inset-0 rounded-full bg-emerald-500/40 animate-ping z-0 scale-105"></span>
+            <i class="fa-brands fa-whatsapp z-10"></i>
+        </a>
+    </div>
+
+    <!-- NOTIFICATION SYSTEM MODAL (Vanilla Toast Message, instead of alert) -->
+    <div id="toast-notification" class="fixed top-24 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-[400px] glass-panel border-l-4 border-emerald-500 p-4 rounded-xl shadow-2xl transition-all duration-300 translate-y-[-100px] opacity-0 pointer-events-none">
+        <div class="flex items-start gap-3">
+            <div class="bg-emerald-500/20 text-emerald-400 p-2 rounded-lg flex-shrink-0">
+                <i class="fa-solid fa-circle-check text-xl"></i>
+            </div>
+            <div>
+                <h4 id="toast-title" class="text-white font-bold text-sm">Berjaya!</h4>
+                <p id="toast-desc" class="text-gray-400 text-xs mt-1 leading-normal">
+                    Pendaftaran atau butiran tempahan anda telah diterima. Kami akan menghubungi anda segera!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC CONTROLLER -->
+    <script>
+        // Data mapping for interactive pricing calculation
+        const modelData = {
+            apple: [
+                { name: "iPhone 15 Pro / Pro Max", modifier: 1.5 },
+                { name: "iPhone 14 / 14 Pro", modifier: 1.3 },
+                { name: "iPhone 13 / 13 Pro", modifier: 1.1 },
+                { name: "iPhone 12 / 12 Pro", modifier: 0.95 },
+                { name: "iPhone 11 / 11 Pro", modifier: 0.8 },
+                { name: "iPhone X / XR / XS", modifier: 0.7 }
+            ],
+            samsung: [
+                { name: "Galaxy S23 / S24 Series", modifier: 1.4 },
+                { name: "Galaxy S21 / S22 Series", modifier: 1.15 },
+                { name: "Galaxy Note 20 Ultra", modifier: 1.2 },
+                { name: "Galaxy A Series (A54 / A73)", modifier: 0.75 },
+                { name: "Galaxy S10 / Note 10 Series", modifier: 0.8 }
+            ],
+            xiaomi: [
+                { name: "Xiaomi 13 / 14 Ultra", modifier: 1.25 },
+                { name: "Xiaomi 11 / 12 Series", modifier: 0.95 },
+                { name: "Redmi Note 12 / 13 Pro", modifier: 0.65 },
+                { name: "Poco F5 / X6 Pro", modifier: 0.7 }
+            ],
+            oppo: [
+                { name: "Oppo Find X6 / Reno 10", modifier: 1.1 },
+                { name: "Oppo Reno 8 / 9 Series", modifier: 0.85 },
+                { name: "Vivo X90 / V29 Pro", modifier: 1.05 },
+                { name: "Oppo / Vivo Y Series (Entry Level)", modifier: 0.55 }
+            ]
+        };
+
+        const issueBasePrices = {
+            screen: { baseMin: 180, baseMax: 350, name: "Skrin Pecah / Rosak LCD" },
+            battery: { baseMin: 90, baseMax: 150, name: "Bateri Kong / Cepat Habis" },
+            charging: { baseMin: 80, baseMax: 130, name: "Sukar Di-Caj (Charging Port)" },
+            camera: { baseMin: 120, baseMax: 220, name: "Kamera Kabur / Rosak" },
+            motherboard: { baseMin: 220, baseMax: 450, name: "Kerosakan Litar Utama / Motherboard" }
+        };
+
+        // DOM elements references
+        const brandSelect = document.getElementById("brand");
+        const modelSelect = document.getElementById("model");
+        const issueSelect = document.getElementById("issue");
+        const estimateResult = document.getElementById("estimate-result");
+        const priceRangeText = document.getElementById("price-range");
+        const bookingWhatsappBtn = document.getElementById("booking-whatsapp-btn");
+
+        // UI elements triggers
+        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        // Mobile Menu Toggling
+        mobileMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+            const icon = mobileMenuBtn.querySelector("i");
+            if (mobileMenu.classList.contains("hidden")) {
+                icon.className = "fa-solid fa-bars-staggered text-xl";
+            } else {
+                icon.className = "fa-solid fa-xmark text-xl";
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll("a");
+        mobileLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.add("hidden");
+                mobileMenuBtn.querySelector("i").className = "fa-solid fa-bars-staggered text-xl";
+            });
+        });
+
+        // Dynamic cascading dropdowns for Brand selection changes
+        brandSelect.addEventListener("change", () => {
+            const selectedBrand = brandSelect.value;
+            
+            // Clear prior values
+            modelSelect.innerHTML = '<option value="" disabled selected>Pilih Model...</option>';
+            modelSelect.removeAttribute("disabled");
+
+            if (modelData[selectedBrand]) {
+                modelData[selectedBrand].forEach((item, index) => {
+                    const opt = document.createElement("option");
+                    opt.value = index; // Store array index as value mapping
+                    opt.textContent = item.name;
+                    modelSelect.appendChild(opt);
+                });
+            }
+            calculatePricing();
+        });
+
+        // Add event triggers to other form variables
+        modelSelect.addEventListener("change", calculatePricing);
+        issueSelect.addEventListener("change", calculatePricing);
+
+        // Price calculator core calculation formula
+        function calculatePricing() {
+            const brandVal = brandSelect.value;
+            const modelIndex = modelSelect.value;
+            const issueVal = issueSelect.value;
+
+            // Compute only if all fields have selected options
+            if (brandVal && modelIndex !== "" && issueVal) {
+                const modelInfo = modelData[brandVal][parseInt(modelIndex)];
+                const issueInfo = issueBasePrices[issueVal];
+
+                if (modelInfo && issueInfo) {
+                    const modifier = modelInfo.modifier;
+                    const finalMinPrice = Math.round(issueInfo.baseMin * modifier);
+                    const finalMaxPrice = Math.round(issueInfo.baseMax * modifier);
+
+                    // Update UI output display
+                    priceRangeText.textContent = `${finalMinPrice} - RM${finalMaxPrice}`;
+                    estimateResult.classList.remove("hidden");
+
+                    // Set dynamic whatsapp link with pre-filled details to improve lead quality
+                    const textMessage = `Hi Hyperkaw Gadget! Saya berminat untuk dapatkan sebut harga/repair bagi peranti berikut:\n\n` +
+                        `• *Jenama:* ${brandVal.toUpperCase()}\n` +
+                        `• *Model:* ${modelInfo.name}\n` +
+                        `• *Kerosakan:* ${issueInfo.name}\n` +
+                        `• *Anggaran Web:* RM${finalMinPrice} - RM${finalMaxPrice}\n\n` +
+                        `Adakah slot untuk repair face-to-face tersedia dalam masa terdekat? Terima kasih!`;
+                    
+                    bookingWhatsappBtn.onclick = () => {
+                        window.open(`https://wa.me/60173513700?text=${encodeURIComponent(textMessage)}`, '_blank');
+                    };
+                }
+            } else {
+                estimateResult.classList.add("hidden");
+            }
+        }
+
+        // Accordion behavior for FAQ module
+        function toggleFaq(btn) {
+            const faqItem = btn.closest(".faq-item");
+            const answer = faqItem.querySelector(".faq-answer");
+            const icon = faqItem.querySelector(".faq-icon");
+            
+            // Check if open
+            if (answer.style.maxHeight && answer.style.maxHeight !== "0px") {
+                answer.style.maxHeight = "0px";
+                icon.style.transform = "rotate(0deg)";
+                faqItem.style.borderColor = "rgba(255, 255, 255, 0.05)";
+            } else {
+                // Close other open siblings
+                document.querySelectorAll(".faq-item").forEach(item => {
+                    item.querySelector(".faq-answer").style.maxHeight = "0px";
+                    item.querySelector(".faq-icon").style.transform = "rotate(0deg)";
+                    item.style.borderColor = "rgba(255, 255, 255, 0.05)";
+                });
+
+                // Expand current selected FAQ item
+                answer.style.maxHeight = answer.scrollHeight + "px";
+                icon.style.transform = "rotate(45deg)";
+                faqItem.style.borderColor = "rgba(14, 165, 233, 0.3)";
+            }
+        }
+
+        // Handles custom Booking form submissions
+        const bookingForm = document.getElementById("booking-form");
+        bookingForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const fullname = document.getElementById("fullname").value;
+            const phone = document.getElementById("phone").value;
+            const device = document.getElementById("device").value;
+            const bdate = document.getElementById("booking-date").value;
+            const details = document.getElementById("details").value;
+
+            // Fire custom dynamic notification instead of browser alerts
+            showToast(
+                "Booking Berjaya Dibuat!",
+                `Terima kasih ${fullname}. Kami sedang menghantar butiran tempahan ke pelayan utama. Sistem sedia memindahkan anda ke WhatsApp untuk rundingan terus!`
+            );
+
+            // Compose custom dynamic WhatsApp link for the general form
+            const whatsAppText = `Hi Hyperkaw Gadget! Saya baru mengisi borang tempahan slot di landing page:\n\n` +
+                `• *Nama:* ${fullname}\n` +
+                `• *Telefon:* ${phone}\n` +
+                `• *Model Telefon:* ${device}\n` +
+                `• *Cadangan Tarikh:* ${bdate}\n` +
+                `• *Masalah:* ${details ? details : 'Tiada huraian tambahan'}\n\n` +
+                `Sila bantu saya menempah slot dan tuntut hadiah PROMO PERCUMA Tempered glass!`;
+
+            // Reset form inputs after simulation
+            bookingForm.reset();
+
+            // Open WhatsApp with form data after 2.5 seconds delay
+            setTimeout(() => {
+                window.open(`https://wa.me/60173513700?text=${encodeURIComponent(whatsAppText)}`, '_blank');
+            }, 2500);
+        });
+
+        // Custom Toast Notification System
+        function showToast(title, desc) {
+            const toast = document.getElementById("toast-notification");
+            const toastTitle = document.getElementById("toast-title");
+            const toastDesc = document.getElementById("toast-desc");
+
+            toastTitle.textContent = title;
+            toastDesc.textContent = desc;
+
+            // Trigger animation in
+            toast.classList.remove("translate-y-[-100px]", "opacity-0", "pointer-events-none");
+            toast.classList.add("translate-y-0", "opacity-100");
+
+            // Hide after 5 seconds
+            setTimeout(() => {
+                toast.classList.add("translate-y-[-100px]", "opacity-0", "pointer-events-none");
+                toast.classList.remove("translate-y-0", "opacity-100");
+            }, 5000);
+        }
+
+        // Force minimum booking date setting to prevent scheduling in the past
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('booking-date').setAttribute('min', today);
+    </script>
+</body>
+</html>
