@@ -141,6 +141,7 @@
                 <div class="hidden md:flex items-center gap-8">
                     <a href="#masalah" class="text-gray-300 hover:text-brand-500 transition-colors font-medium text-sm">Masalah Anda</a>
                     <a href="#kelebihan" class="text-gray-300 hover:text-brand-500 transition-colors font-medium text-sm">Kelebihan</a>
+                    <a href="#harga" class="text-gray-300 hover:text-brand-500 transition-colors font-medium text-sm">Senarai Harga</a>
                     <a href="#kalkulator" class="text-gray-300 hover:text-brand-500 transition-colors font-medium text-sm bg-brand-500/10 px-3 py-1.5 rounded-full border border-brand-500/20">Kira Kos Repair</a>
                     <a href="#proses" class="text-gray-300 hover:text-brand-500 transition-colors font-medium text-sm">Cara Kami Bekerja</a>
                     <a href="#testimoni" class="text-gray-300 hover:text-brand-500 transition-colors font-medium text-sm">Ulasan</a>
@@ -161,7 +162,7 @@
                 <div class="md:hidden">
                     <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2 rounded-lg bg-white/5" aria-label="Buka Menu">
                         <i class="fa-solid fa-bars-staggered text-xl"></i>
-                    </</button>
+                    </button>
                 </div>
             </div>
         </div>
@@ -170,6 +171,7 @@
         <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-brand-dark/95 backdrop-blur-lg px-4 pt-4 pb-6 space-y-3">
             <a href="#masalah" class="block text-gray-300 hover:text-brand-500 transition-colors py-2 px-3 rounded-lg hover:bg-white/5 font-medium text-base">Masalah Anda</a>
             <a href="#kelebihan" class="block text-gray-300 hover:text-brand-500 transition-colors py-2 px-3 rounded-lg hover:bg-white/5 font-medium text-base">Kelebihan</a>
+            <a href="#harga" class="block text-gray-300 hover:text-brand-500 transition-colors py-2 px-3 rounded-lg hover:bg-white/5 font-medium text-base">Senarai Harga</a>
             <a href="#kalkulator" class="block text-brand-500 hover:text-brand-600 transition-colors py-2 px-3 rounded-lg hover:bg-white/5 font-semibold text-base">Kira Kos Repair</a>
             <a href="#proses" class="block text-gray-300 hover:text-brand-500 transition-colors py-2 px-3 rounded-lg hover:bg-white/5 font-medium text-base">Cara Kami Bekerja</a>
             <a href="#testimoni" class="block text-gray-300 hover:text-brand-500 transition-colors py-2 px-3 rounded-lg hover:bg-white/5 font-medium text-base">Ulasan</a>
@@ -489,6 +491,270 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- SENARAI SERVIS & HARGA SECTION -->
+    <section id="harga" class="py-20 relative bg-brand-darker/80 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-brand-500 font-extrabold text-sm uppercase tracking-widest block mb-2">Senarai Servis</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Pakej Repair & Anggaran Harga</h2>
+                <p class="text-gray-400 mt-3 text-sm sm:text-base">
+                    Pilihan servis paling popular di Hyperkaw Gadget. Sila isi borang tempahan pantas di bawah kad peranti pilihan anda.
+                </p>
+            </div>
+
+            <!-- Price Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Repair Type 1 -->
+                <div class="glass-card p-6 rounded-2xl border border-white/5 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="bg-brand-500/10 text-brand-500 w-12 h-12 rounded-xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-mobile-screen"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white">Tukar Skrin / LCD</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">Penggantian skrin pecah, retak atau LCD blank / bergaris (Gred Original/OEM).</p>
+                    </div>
+                    <div class="border-t border-white/5 pt-4 mt-auto">
+                        <div class="flex justify-between items-center mb-4">
+                            <div>
+                                <span class="block text-xs text-gray-500 mb-1">Anggaran Harga</span>
+                                <span class="text-brand-accent font-extrabold text-lg">RM 150 - RM 450</span>
+                            </div>
+                            <button type="button" onclick="toggleServiceForm('form-service-1', this)" class="bg-brand-500/10 hover:bg-brand-500 text-brand-500 hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5">
+                                <span>Tempah</span> <i class="fa-solid fa-chevron-down transition-transform"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Inline Collapsible Form -->
+                        <div id="form-service-1" class="hidden transition-all duration-300 border-t border-white/5 pt-4">
+                            <form onsubmit="handleServiceFormSubmit(event, 'Tukar Skrin / LCD', 'RM 150 - RM 450')" class="space-y-3">
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Nama Anda</label>
+                                    <input type="text" required placeholder="Contoh: Muhammad" class="w-full bg-brand-darker border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white outline-none focus:border-brand-500">
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Model Telefon</label>
+                                    <input type="text" required placeholder="Contoh: iPhone 13 Pro" class="w-full bg-brand-darker border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white outline-none focus:border-brand-500">
+                                </div>
+                                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2 rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-lg">
+                                    <i class="fa-brands fa-whatsapp"></i> Hantar Tempahan
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repair Type 2 -->
+                <div class="glass-card p-6 rounded-2xl border border-white/5 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="bg-emerald-500/10 text-emerald-500 w-12 h-12 rounded-xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-battery-full"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white">Tukar Bateri Premium</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">Penyelesaian untuk bateri kembung, battery health rendah, atau cepat kong.</p>
+                    </div>
+                    <div class="border-t border-white/5 pt-4 mt-auto">
+                        <div class="flex justify-between items-center mb-4">
+                            <div>
+                                <span class="block text-xs text-gray-500 mb-1">Anggaran Harga</span>
+                                <span class="text-brand-accent font-extrabold text-lg">RM 80 - RM 150</span>
+                            </div>
+                            <button type="button" onclick="toggleServiceForm('form-service-2', this)" class="bg-brand-500/10 hover:bg-brand-500 text-brand-500 hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5">
+                                <span>Tempah</span> <i class="fa-solid fa-chevron-down transition-transform"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Inline Collapsible Form -->
+                        <div id="form-service-2" class="hidden transition-all duration-300 border-t border-white/5 pt-4">
+                            <form onsubmit="handleServiceFormSubmit(event, 'Tukar Bateri Premium', 'RM 80 - RM 150')" class="space-y-3">
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Nama Anda</label>
+                                    <input type="text" required placeholder="Contoh: Muhammad" class="w-full bg-brand-darker border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white outline-none focus:border-brand-500">
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Model Telefon</label>
+                                    <input type="text" required placeholder="Contoh: iPhone 11 Pro" class="w-full bg-brand-darker border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white outline-none focus:border-brand-500">
+                                </div>
+                                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2 rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-lg">
+                                    <i class="fa-brands fa-whatsapp"></i> Hantar Tempahan
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repair Type 3 -->
+                <div class="glass-card p-6 rounded-2xl border border-white/5 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="bg-indigo-500/10 text-indigo-500 w-12 h-12 rounded-xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-plug"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white">Baiki Charging Port</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">Menggantikan port pengecasan yang longgar, tidak detect kabel atau lambat masuk caj.</p>
+                    </div>
+                    <div class="border-t border-white/5 pt-4 mt-auto">
+                        <div class="flex justify-between items-center mb-4">
+                            <div>
+                                <span class="block text-xs text-gray-500 mb-1">Anggaran Harga</span>
+                                <span class="text-brand-accent font-extrabold text-lg">RM 60 - RM 120</span>
+                            </div>
+                            <button type="button" onclick="toggleServiceForm('form-service-3', this)" class="bg-brand-500/10 hover:bg-brand-500 text-brand-500 hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5">
+                                <span>Tempah</span> <i class="fa-solid fa-chevron-down transition-transform"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Inline Collapsible Form -->
+                        <div id="form-service-3" class="hidden transition-all duration-300 border-t border-white/5 pt-4">
+                            <form onsubmit="handleServiceFormSubmit(event, 'Baiki Charging Port', 'RM 60 - RM 120')" class="space-y-3">
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Nama Anda</label>
+                                    <input type="text" required placeholder="Contoh: Muhammad" class="w-full bg-brand-darker border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white outline-none focus:border-brand-500">
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Model Telefon</label>
+                                    <input type="text" required placeholder="Contoh: Samsung S21" class="w-full bg-brand-darker border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white outline-none focus:border-brand-500">
+                                </div>
+                                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2 rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-lg">
+                                    <i class="fa-brands fa-whatsapp"></i> Hantar Tempahan
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repair Type 4 -->
+                <div class="glass-card p-6 rounded-2xl border border-white/5 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="bg-rose-500/10 text-rose-500 w-12 h-12 rounded-xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white">Baiki Motherboard & IC</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">Pateri mikro untuk kerosakan litar utama, bootloop, telefon mati mengejut atau IC rosak.</p>
+                    </div>
+                    <div class="border-t border-white/5 pt-4 mt-auto">
+                        <div class="flex justify-between items-center mb-4">
+                            <div>
+                                <span class="block text-xs text-gray-500 mb-1">Anggaran Harga</span>
+                                <span class="text-brand-accent font-extrabold text-lg">RM 200 - RM 500</span>
+                            </div>
+                            <button type="button" onclick="toggleServiceForm('form-service-4', this)" class="bg-brand-500/10 hover:bg-brand-500 text-brand-500 hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5">
+                                <span>Tempah</span> <i class="fa-solid fa-chevron-down transition-transform"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Inline Collapsible Form -->
+                        <div id="form-service-4" class="hidden transition-all duration-300 border-t border-white/5 pt-4">
+                            <form onsubmit="handleServiceFormSubmit(event, 'Baiki Motherboard & IC', 'RM 200 - RM 500')" class="space-y-3">
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Nama Anda</label>
+                                    <input type="text" required placeholder="Contoh: Muhammad" class="w-full bg-brand-darker border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white outline-none focus:border-brand-500">
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Model Telefon</label>
+                                    <input type="text" required placeholder="Contoh: iPhone 12 Pro" class="w-full bg-brand-darker border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white outline-none focus:border-brand-500">
+                                </div>
+                                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2 rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-lg">
+                                    <i class="fa-brands fa-whatsapp"></i> Hantar Tempahan
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repair Type 5 -->
+                <div class="glass-card p-6 rounded-2xl border border-white/5 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="bg-sky-500/10 text-sky-500 w-12 h-12 rounded-xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-camera"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white">Penukaran Modul Kamera</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">Selesaikan masalah kamera utama/depan bergegar (shaking), kabur, atau screen hitam bila dibuka.</p>
+                    </div>
+                    <div class="border-t border-white/5 pt-4 mt-auto">
+                        <div class="flex justify-between items-center mb-4">
+                            <div>
+                                <span class="block text-xs text-gray-500 mb-1">Anggaran Harga</span>
+                                <span class="text-brand-accent font-extrabold text-lg">RM 120 - RM 250</span>
+                            </div>
+                            <button type="button" onclick="toggleServiceForm('form-service-5', this)" class="bg-brand-500/10 hover:bg-brand-500 text-brand-500 hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5">
+                                <span>Tempah</span> <i class="fa-solid fa-chevron-down transition-transform"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Inline Collapsible Form -->
+                        <div id="form-service-5" class="hidden transition-all duration-300 border-t border-white/5 pt-4">
+                            <form onsubmit="handleServiceFormSubmit(event, 'Penukaran Modul Kamera', 'RM 120 - RM 250')" class="space-y-3">
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Nama Anda</label>
+                                    <input type="text" required placeholder="Contoh: Muhammad" class="w-full bg-brand-darker border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white outline-none focus:border-brand-500">
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Model Telefon</label>
+                                    <input type="text" required placeholder="Contoh: iPhone XS" class="w-full bg-brand-darker border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white outline-none focus:border-brand-500">
+                                </div>
+                                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2 rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-lg">
+                                    <i class="fa-brands fa-whatsapp"></i> Hantar Tempahan
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repair Type 6 -->
+                <div class="glass-card p-6 rounded-2xl border border-white/5 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="bg-blue-500/10 text-blue-500 w-12 h-12 rounded-xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-droplet-slash"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white">Servis Pemulihan Masuk Air</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">Cucian kimia / ultrasonik pada komponen dalaman dan pemeriksaan menyeluruh untuk kerosakan cecair.</p>
+                    </div>
+                    <div class="border-t border-white/5 pt-4 mt-auto">
+                        <div class="flex justify-between items-center mb-4">
+                            <div>
+                                <span class="block text-xs text-gray-500 mb-1">Anggaran Harga</span>
+                                <span class="text-brand-accent font-extrabold text-lg">Bermula RM 100</span>
+                            </div>
+                            <button type="button" onclick="toggleServiceForm('form-service-6', this)" class="bg-brand-500/10 hover:bg-brand-500 text-brand-500 hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5">
+                                <span>Tempah</span> <i class="fa-solid fa-chevron-down transition-transform"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Inline Collapsible Form -->
+                        <div id="form-service-6" class="hidden transition-all duration-300 border-t border-white/5 pt-4">
+                            <form onsubmit="handleServiceFormSubmit(event, 'Servis Pemulihan Masuk Air', 'Bermula RM 100')" class="space-y-3">
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Nama Anda</label>
+                                    <input type="text" required placeholder="Contoh: Muhammad" class="w-full bg-brand-darker border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white outline-none focus:border-brand-500">
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Model Telefon</label>
+                                    <input type="text" required placeholder="Contoh: Huawei P30" class="w-full bg-brand-darker border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white outline-none focus:border-brand-500">
+                                </div>
+                                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2 rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-lg">
+                                    <i class="fa-brands fa-whatsapp"></i> Hantar Tempahan
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
@@ -919,11 +1185,9 @@
                             </div>
                         </div>
                         <div class="flex items-start gap-3">
-                            <!-- Ditukar dari items-center ke items-start supaya ikon jam kekal di atas bila text jadi multi-line -->
                             <i class="fa-solid fa-clock text-brand-500 text-xl mt-0.5"></i>
                             <div>
                                 <span class="block text-white text-xs font-semibold uppercase mb-1">Waktu Operasi:</span>
-                                <!-- Ditambah class 'block' pada setiap span di bawah -->
                                 <span class="block text-gray-400 text-sm">Isnin - Jumaat (10:30 Pagi - 9:30 Malam)</span>
                                 <span class="block text-gray-400 text-sm">Sabtu (10:30 Pagi - 5:30 Petang)</span>
                                 <span class="block text-gray-400 text-sm text-red-400">Ahad (Tutup)</span>
@@ -1026,7 +1290,6 @@
                 <!-- Google Map Embed Frame Right -->
                 <div class="lg:col-span-7">
                     <div class="w-full h-[350px] sm:h-[400px] rounded-3xl overflow-hidden border border-white/10 shadow-neon-glow relative bg-brand-dark">
-                        <!-- Simulated Interactive Map Embed using genuine public Google Maps Link for KL -->
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31873.60885453651!2d101.42255811083983!3d3.040692499999992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc538f0f0101ff%3A0xfa812fba41f35e8a!2sHyperkaw%20Gadget!5e0!3m2!1sen!2smy!4v1780937353825!5m2!1sen!2smy" 
                             class="w-full h-full border-0 grayscale invert opacity-80 hover:grayscale-0 hover:invert-0 hover:opacity-100 transition-all duration-500" 
@@ -1365,7 +1628,48 @@
 
         // Force minimum booking date setting to prevent scheduling in the past
         const today = new Date().toISOString().split('T')[0];
-        document.getElementById('booking-date').setAttribute('min', today);
+        if (document.getElementById('booking-date')) {
+            document.getElementById('booking-date').setAttribute('min', today);
+        }
+
+        // Interactive toggle for service cards inline forms
+        function toggleServiceForm(formId, btn) {
+            const form = document.getElementById(formId);
+            const icon = btn.querySelector('i');
+            if (form.classList.contains('hidden')) {
+                form.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                form.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Submission logic for service cards inline forms
+        function handleServiceFormSubmit(event, serviceName, priceRange) {
+            event.preventDefault();
+            const form = event.target;
+            const name = form.elements[0].value;
+            const model = form.elements[1].value;
+
+            showToast(
+                "Tempahan Diterima!",
+                `Terima kasih ${name}. Sistem sedia membuka WhatsApp untuk melengkapkan slot tempahan bagi perkhidmatan ${serviceName}!`
+            );
+
+            const whatsAppText = `Hi Hyperkaw Gadget! Saya ingin menempah slot untuk perkhidmatan pembaikan berikut:\n\n` +
+                `• *Servis:* ${serviceName}\n` +
+                `• *Nama Pelanggan:* ${name}\n` +
+                `• *Model Telefon:* ${model}\n` +
+                `• *Anggaran Harga:* ${priceRange}\n\n` +
+                `Sila hubungi saya semula untuk pengesahan slot kehadiran. Terima kasih!`;
+
+            form.reset();
+
+            setTimeout(() => {
+                window.open(`https://wa.me/60123456789?text=${encodeURIComponent(whatsAppText)}`, '_blank');
+            }, 2000);
+        }
     </script>
 </body>
 </html>
